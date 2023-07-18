@@ -6,41 +6,41 @@ class divide
 
 {
 
-int a,b;
+	int a,b;
 
-public:
+	public:
 
-void compute()
+	void compute()
 
-{
+	{
 
-cout<<"\nEnter two integers \n";
+		cout<<"\nEnter two integers \n";
 
-cin>>a>>b;
+		cin>>a>>b;
 
-try
+		try
 
-{
+		{
 
-if(b!=0)
+			if(b!=0)
 
-cout<<a/b<<"\n";
+			cout<<a/b<<"\n";
 
-else
+			else
 
-throw b;
+			throw b;
 
-}
+		}
 
-catch(...)
+		catch(...)
 
-{
+		{
 
-cout<<"\nDivision by zero(error) \n";
+			cout<<"\nDivision by zero(error) \n";
 
-}
+		}
 
-}
+	}
 
 };
 
@@ -48,40 +48,40 @@ class neg
 
 {
 
-int a;
+	int a;
 
-public:
+	public:
 
-void scan()
+	void scan()
 
-{
+	{
 
-cout<<"\nEnter age \n";
+		cout<<"\nEnter age \n";
 
-cin>>a;
+		cin>>a;	
 
-try
+		try
 
-{
+		{
 
-if(a>=0)
-cout<<"\nAge of the person is "<<a<<" \n";
+			if(a>=0)
+			cout<<"\nAge of the person is "<<a<<" \n";
 
-else
+			else
 
-throw a;
+			throw a;
 
-}
+		}
 
-catch(...)
+		catch(...)
 
-{
+		{	
 
-cout<<"\nPlease enter positive value for age \n";
+			cout<<"\nPlease enter positive value for age \n";
 
-}
+		}
 
-}
+	}
 
 };
 
@@ -89,38 +89,38 @@ int main()
 
 {
 
-int c;
+	int c;
 
-divide d;
+	divide d;
 
-neg n;
+	neg n;
 
-while(1)
+	while(1)
 
-{
+	{
 
-cout<<"1.divide integers 2.enter age 3.exit \n";
+		cout<<"1.divide integers 2.enter age 3.exit \n";
 
-cin>>c;
+		cin>>c;
 
-switch(c)
+		switch(c)
 
-{
+		{
 
-case 1:d.compute();
+		case 1:d.compute();
 
-break;
+		break;
 
-case 2:n.scan();
+		case 2:n.scan();
 
-break;
+		break;
 
-default:return 0;
+		default:return 0;
 
-}
+		}
 
-}
+	}
 
-return 0;
+	return 0;
 
 }
