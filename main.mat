@@ -1,0 +1,98 @@
+clc; % Clear the Command Window, removing all previous text
+clear; % Clear the Workspace, removing all stored variables
+
+% Matrix operations
+A = [7, 8, 9; 10, 11, 12]; % Creates a matrix A with two rows and three columns
+B = flipud(A); % Flips matrix A upside down
+
+x = A(2,3); % Retrieves the value at the second row and third column of matrix A, which is 12
+
+Z = ones(2,4); % Creates a 2x4 matrix filled with ones
+O = zeros(5,5); % Creates a 5x5 matrix filled with zeros
+
+A(1, :) = [70, 80, 90]; % Changes the first row of matrix A to [70, 80, 90]
+
+% File operations
+data = readtable('example_data.csv'); % Reads the contents of 'example_data.csv' into the table 'data'
+
+writetable(data, 'output_example.csv'); % Writes the table 'data' to 'output_example.csv'
+
+% Data manipulation
+data = [5, NaN, 7; 8, 9, NaN]; % Sample data with NaN values
+data(isnan(data)) = -1; % Replaces NaN values with -1, resulting in [5, -1, 7; 8, 9, -1]
+
+data = [2, 4, 6; 8, 10, 12]; % Sample data
+mean_val = std(data); % Computes the standard deviation of each column, resulting in [3, 3, 3]
+
+% Plotting
+x = 0:0.2:20; % x values from 0 to 20 in steps of 0.2
+y = cos(x); % y values as the cosine of x
+plot(x, y); % Plots y = cos(x)
+
+% 3D Plotting
+[X, Y] = meshgrid(-10:1:10, -10:1:10); % Create a grid of x and y values
+Z = cos(sqrt(X.^2 + Y.^2)); % Compute z values as a function of x and y
+surf(X, Y, Z); % Creates a 3D surface plot of the function
+
+% Machine Learning
+load fisheriris; % Load sample dataset
+X = meas(:, 3:4); % Use last two features
+Y = species; % Use species as labels
+model = fitctree(X, Y); % Train Decision Tree classifier
+
+load carsmall; % Load sample dataset
+X = Horsepower; % Predictor
+Y = Acceleration; % Response
+model = fitlm(X, Y); % Train linear regression model
+
+% Feature Extraction
+X = rand(6, 8); % Sample data matrix with 6 rows and 8 columns
+features = [max(X, [], 2), min(X, [], 2)]; % Compute max and min for each row
+
+% SVM with cross-validation
+load fisheriris; % Load sample dataset
+X = meas(:, 1:2); % Use first two features
+Y = species; % Use species as labels
+model = fitcsvm(X, Y, 'CrossVal', 'on'); % Train SVM classifier with cross-validation
+
+% Image Processing
+RGB = imread('peppers.png'); % Read RGB image
+gray = rgb2gray(RGB); % Convert RGB image to grayscale
+edge_detected = edge(gray, 'Canny'); % Detect edges using Canny method
+
+RGB = imread('peppers.png'); % Read RGB image
+gray = rgb2gray(RGB); % Convert RGB image to grayscale
+image_adjusted = imsharpen(gray); % Sharpen the grayscale image
+
+% Image Classification
+net = googlenet(); % Load pretrained GoogLeNet network
+I = imread('peppers.png'); % Read image
+label = classify(net, I); % Classify image using GoogLeNet
+
+% Signal Processing
+t = linspace(0, 2, 2000); % Time vector
+signal = cos(2*pi*15*t) + 0.3*randn(size(t)); % Signal with noise
+signal_filtered = lowpass(signal, 0.05); % Apply low-pass filter to remove noise
+
+Fs = 2000; % Sampling frequency
+t = 0:1/Fs:2-1/Fs; % Time vector
+signal = cos(2*pi*60*t) + 0.4*cos(2*pi*150*t); % Signal with 60 Hz and 150 Hz components
+psd = periodogram(signal, hamming(length(signal)), length(signal), Fs); % Compute power spectral density
+plot(psd); % Plot power spectral density
+
+Fs = 2000; % Sampling frequency
+t = 0:1/Fs:2-1/Fs; % Time vector
+signal = cos(2*pi*60*t) + 0.4*cos(2*pi*150*t); % Signal with 60 Hz and 150 Hz components
+signal_filtered = bandpass(signal, [50 100], Fs); % Apply band-pass filter between 50 Hz and 100 Hz
+
+t = linspace(0, 2, 2000); % Time vector
+signal = cos(2*pi*15*t); % Signal
+peak_val = min(signal); % Find minimum value in the signal
+
+disp('MATLAB is great!'); % Displays 'MATLAB is great!' in the Command Window
+
+function result = square_function(x)
+  result = x^2; % Computes the square of input x
+end
+
+dbstop if naninf; % Set a breakpoint to pause execution when NaN or Inf occurs
