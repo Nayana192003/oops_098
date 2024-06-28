@@ -96,3 +96,13 @@ function result = square_function(x)
 end
 
 dbstop if naninf; % Set a breakpoint to pause execution when NaN or Inf occurs
+
+layers = [ ...
+    imageInputLayer([28 28 1]) % Input layer for Specifing the size of the input images, 
+                                 which are 28x28 pixels with a single color channel 
+    convolution2dLayer(3, 8, 'Padding', 'same') % Convolutional layer with 3x3 filters 
+                                                  and 8 channels and output padding is same as input
+    reluLayer % ReLU Rectified Linear Unit (ReLU) setting all negative values to zero and keeping positive values unchanged.
+    fullyConnectedLayer(10) % Fully connected layer with 10 neurons which typically corresponds to the number of classes in a classification
+    softmaxLayer % Softmax activation layer converts the output of the previous layer into probabilities that sum to 1
+    classificationLayer]; % Classification output layer used for training the network with labeled data and computing the loss during training
